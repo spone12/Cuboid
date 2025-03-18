@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7511832774708595163}
   - component: {fileID: 7831488745314221038}
   - component: {fileID: 4999227119836492210}
+  - component: {fileID: 855005203990011627}
   m_Layer: 0
   m_Name: WallSimple
   m_TagString: Obstacle
@@ -133,3 +134,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &855005203990011627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821158701763652395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a511eaeb5ffc6064db5b681054a1a682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 0.5, y: 0.5, z: 0.5}
+  maxScale: {x: 3, y: 3, z: 3}
+  speed: 2

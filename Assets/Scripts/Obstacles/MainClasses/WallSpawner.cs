@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallSpawner : MonoBehaviour {
 
-    public GameObject[] prefabObstacles; // Obstacles prefabs
+    public Obstacles[] prefabObstacles; // Obstacles prefabs
 
     [SerializeField]
     private string _groundTag = "Ground"; // Tag reference to the Ground object
@@ -19,12 +19,13 @@ public class WallSpawner : MonoBehaviour {
     private float _spawnPercentage = 8f; // Percentage of occurrence of obstacles at one site
 
     void Start() {
-        SpawnCubes();
+        _container = new GameObject("ObstacleContainer").transform;
+        SpawnObstacles();
     }
 
-    void SpawnCubes() {
-
-        if (prefabObstacles.Length == 0) {
+    void SpawnObstacles() {
+        
+        if (prefabObstacles == null || prefabObstacles.Length == 0) {
             return;
         }
 
@@ -53,10 +54,12 @@ public class WallSpawner : MonoBehaviour {
                 Vector3 spawnPosition = new Vector3(randomX, groundPosition.y + appearanceHeight, randomZ);
 
                 // We get a random prefab
-                GameObject randomObstacle = prefabObstacles[UnityEngine.Random.Range(0, prefabObstacles.Length)];
+                Obstacles randomObstacle = prefabObstacles[UnityEngine.Random.Range(0, prefabObstacles.Length)];
 
                 // Create a cube inside the container
-                Instantiate(randomObstacle, spawnPosition, Quaternion.identity, _container);
+                if (randomObstacle != null) {
+                    randomObstacle.Spawn(spawnPosition);
+                }
             }
         }
     }
@@ -65,7 +68,15 @@ public class WallSpawner : MonoBehaviour {
      * Adding an object to be drawn on the map
      */
     public void AddprefabObstacles(GameObject obj) {
-        prefabObstacles.Append(obj);
+        Obstacles obstacleComponent = obj.GetComponent<Obstacles>();
+
+        if (obstacleComponent == null) {
+            return;
+        }
+
+        var obstaclesList = prefabObstacles.ToList(); // Convert to a list
+        obstaclesList.Add(obstacleComponent); // Adding an object
+        prefabObstacles = obstaclesList.ToArray(); // Convert back to an array
     }
 
     /**

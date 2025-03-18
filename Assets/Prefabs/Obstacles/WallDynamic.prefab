@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7831488745314221038}
   - component: {fileID: 4999227119836492210}
   - component: {fileID: 5602482726479586422}
+  - component: {fileID: 1994917974250090804}
   m_Layer: 0
   m_Name: WallDynamic
   m_TagString: Obstacle
@@ -149,3 +150,15 @@ MonoBehaviour:
   minScale: {x: 0.5, y: 0.5, z: 0.5}
   maxScale: {x: 3, y: 3, z: 3}
   speed: 2
+--- !u!114 &1994917974250090804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821158701763652395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a511eaeb5ffc6064db5b681054a1a682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
